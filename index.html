@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce — AMIRA x LA REAL</title>
+
+    <meta property="og:title" content="E-commerce — AMIRA x LA REAL">
+    <meta property="og:description" content="Propuesta para montar el ecosistema digital de AMIRA y escalar ventas a nivel nacional.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="logo-la-real.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #F5F0EB;
+            --ink: #14201c;
+            --muted: #6b7280;
+            --line: rgba(13,27,42,0.1);
+            --green: #16a34a;
+            --navy: #0D1B2A;
+            --card: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        .page { max-width: 860px; margin: 0 auto; padding: 64px 40px 80px; }
+
+        .doc-head { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 28px; border-bottom: 1px solid var(--line); margin-bottom: 44px; }
+        .doc-head img.lareal { height: 26px; filter: brightness(0); opacity: 0.9; }
+        .doc-head .client-name { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; color: var(--ink); }
+        .doc-meta { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); text-align: right; }
+
+        .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--green); margin-bottom: 16px; }
+        h1 { font-size: 42px; font-weight: 900; letter-spacing: -1.8px; line-height: 1.08; margin-bottom: 18px; max-width: 740px; }
+        .lede { font-size: 18px; color: #374151; max-width: 680px; font-weight: 400; }
+
+        section { margin-top: 52px; }
+        h2 { font-size: 13px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--navy); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+        p { font-size: 16px; color: #374151; margin-bottom: 14px; }
+        p strong { color: var(--ink); font-weight: 700; }
+        em { font-style: italic; }
+        .brand { font-weight: 700; font-style: italic; }
+        .sublabel { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin: 30px 0 14px; }
+
+        .note { font-size: 14.5px; color: var(--muted); background: rgba(22,163,74,0.06); border-left: 3px solid var(--green); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-top: 6px; }
+        .note strong { color: var(--green); }
+
+        /* Dos servicios */
+        .sites { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .site-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 30px 28px; display: flex; flex-direction: column; }
+        .site-card.recommended { border: 1.5px solid var(--green); }
+        .site-tag { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+        .site-name { font-size: 26px; font-weight: 900; color: var(--ink); letter-spacing: -1px; line-height: 1.05; margin-bottom: 14px; }
+        .site-desc { font-size: 14.5px; color: #4b5563; line-height: 1.55; margin-bottom: 18px; }
+        .site-desc em { color: var(--green); font-style: normal; font-weight: 600; }
+        .site-feat { list-style: none; display: grid; gap: 9px; margin-top: auto; }
+        .site-feat li { font-size: 13.5px; color: #4b5563; display: flex; gap: 10px; align-items: baseline; }
+        .site-feat li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; transform: translateY(-2px); }
+
+        /* Principios (pillars) */
+        .pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        .pillar { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 24px 26px; }
+        .pillar-n { font-size: 14px; font-weight: 800; color: var(--green); letter-spacing: 2px; margin-bottom: 12px; }
+        .pillar-t { font-size: 17px; font-weight: 800; color: var(--ink); letter-spacing: -0.4px; margin-bottom: 8px; }
+        .pillar p { font-size: 14.5px; margin: 0; color: #4b5563; line-height: 1.5; }
+
+        /* Includes */
+        .inc { list-style: none; display: grid; grid-template-columns: 1fr; gap: 11px; }
+        .inc li { font-size: 15px; color: #4b5563; display: flex; gap: 10px; align-items: baseline; }
+        .inc li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; transform: translateY(-2px); }
+        .inc b { color: var(--ink); font-weight: 700; }
+
+        /* Proceso (plan) */
+        .plan { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .step { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px 20px; }
+        .step.first { border: 1.5px solid var(--green); }
+        .step-m { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+        .step-t { font-size: 16px; font-weight: 800; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.3px; }
+        .step p { font-size: 13px; color: #4b5563; margin: 0; line-height: 1.45; }
+
+        /* Garantía band */
+        .guarantee { background: var(--navy); color: #fff; border-radius: 14px; padding: 24px 28px; margin-top: 16px; display: flex; gap: 18px; align-items: center; }
+        .guarantee .g-tag { font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy); background: var(--green); padding: 6px 13px; border-radius: 50px; white-space: nowrap; flex-shrink: 0; }
+        .guarantee p { color: #e5e7eb; font-size: 15px; margin: 0; line-height: 1.5; }
+        .guarantee b { color: #fff; }
+
+        /* Marquee */
+        @keyframes mq-roll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .mq { margin-top: 22px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+        .mq-row { overflow: hidden; padding: 14px 0; }
+        .mq-row + .mq-row { border-top: 1px solid var(--line); opacity: 0.45; }
+        .mq-track { display: flex; width: max-content; font-weight: 800; font-size: clamp(26px, 4vw, 46px); letter-spacing: -0.03em; line-height: 1; color: var(--ink); animation: mq-roll 55s linear infinite; }
+        .mq-row.reverse .mq-track { animation-direction: reverse; animation-duration: 70s; }
+        .mq-item { display: inline-flex; align-items: center; }
+        .mq-item .ast { color: var(--green); margin: 0 30px; font-weight: 400; font-size: 0.5em; }
+        @media (prefers-reduced-motion: reduce) { .mq-track { animation: none; } }
+
+        /* Inversión (pkgs) */
+        .pkgs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+        .pkg { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px 22px; position: relative; text-align: center; }
+        .pkg.combo { border: 1.5px solid var(--green); }
+        .pkg-tag { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: var(--green); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 50px; white-space: nowrap; }
+        .pkg-name { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); }
+        .pkg-sub { font-size: 13px; font-weight: 500; color: var(--muted); margin: 4px 0 14px; }
+        .pkg-price { font-size: 30px; font-weight: 900; color: var(--ink); letter-spacing: -1px; line-height: 1; }
+        .pkg-unit { font-size: 12px; color: #9ca3af; font-weight: 600; margin-top: 4px; }
+        .pkg-save { font-size: 12.5px; font-weight: 700; color: var(--green); margin-top: 10px; }
+        .pkg-aud { font-size: 12.5px; font-style: italic; color: #9ca3af; margin-top: 10px; line-height: 1.4; }
+
+        /* Next + footer */
+        .next { margin-top: 56px; background: var(--navy); color: #fff; border-radius: 18px; padding: 40px 40px; }
+        .next h2 { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.12); }
+        .next p { color: #cbd5e1; }
+        .cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; background: var(--green); color: #fff; text-decoration: none; font-weight: 700; font-size: 15px; padding: 13px 24px; border-radius: 50px; transition: opacity 0.2s ease; }
+        .cta:hover { opacity: 0.9; }
+        .cta svg { width: 18px; height: 18px; }
+
+        .foot { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+        .foot img { height: 16px; opacity: 0.7; vertical-align: middle; filter: brightness(0); }
+
+        @media (max-width: 720px) {
+            .page { padding: 40px 22px 60px; }
+            .doc-head { flex-direction: column; align-items: flex-start; gap: 14px; }
+            .doc-meta { text-align: left; }
+            h1 { font-size: 30px; letter-spacing: -1px; }
+            .lede { font-size: 16px; }
+            .sites { grid-template-columns: 1fr; }
+            .pillars { grid-template-columns: 1fr; }
+            .plan { grid-template-columns: 1fr 1fr; }
+            .pkgs { grid-template-columns: 1fr; }
+            .pkg.combo { order: -1; }
+            .guarantee { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .next { padding: 30px 24px; }
+        }
+
+        @media print {
+            body { background: #fff; }
+            .page { max-width: 100%; padding: 24px; }
+            .site-card, .pillar, .step, .pkg { box-shadow: none; }
+            .cta { display: none; }
+            section { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <header class="doc-head">
+            <div style="display:flex;align-items:center;gap:16px;">
+                <span class="client-name">AMIRA</span>
+                <span style="color:#cbd5e1;font-weight:300;">&times;</span>
+                <img class="lareal" src="logo-la-real.png" alt="LA REAL">
+            </div>
+            <div class="doc-meta">Propuesta · E-commerce<br>Julio 2026</div>
+        </header>
+
+        <div class="eyebrow">Para María Mogollón</div>
+        <h1>Tu tienda online lista para vender a todo Colombia</h1>
+        <p class="lede">Montamos el ecosistema digital completo de <span class="brand">AMIRA</span> para que dejes de vender solo en Bucaramanga y llegues a clientes en cualquier parte del país.</p>
+
+        <section>
+            <h2>Lo que conversamos</h2>
+            <p>Tienes una marca de athleisure con un branding muy limpio y fotografías de producto listas. Lo que te falta es el <strong>canal digital</strong>: una página web donde la gente pueda ver tus productos, comprar y que tú despachas a cualquier parte de Colombia.</p>
+            <p>Tú misma lo dijiste: prefieres comprar por página web que ir a una tienda. Y si tú piensas así, hay miles de personas pensando igual. La idea es que <span class="brand">AMIRA</span> esté lista para recibirlas.</p>
+            <p class="note">Ya tienes el branding y las fotos, eso nos ahorra tiempo. Podríamos tener tu página lista en <strong>aproximadamente 15 días</strong>.</p>
+        </section>
+
+        <section>
+            <h2>Los dos servicios</h2>
+            <div class="sites">
+                <div class="site-card">
+                    <div class="site-tag">Paso 1</div>
+                    <div class="site-name">Puesta a punto</div>
+                    <div class="site-desc">Todo el montaje inicial: página web, email marketing, pasarela de pagos, flujos automáticos. Te dejamos <em>lista para vender</em>, literalmente. Alguien entra, compra, te llega el dinero y tú despachas.</div>
+                    <ul class="site-feat">
+                        <li>Página web en Shopify (diseño a la medida)</li>
+                        <li>Carga de todos tus productos con fotos</li>
+                        <li>Pasarela de pagos (Mercado Pago o WomPi)</li>
+                        <li>Email marketing: carrito abandonado, bienvenida, etc.</li>
+                        <li>Integración con WhatsApp</li>
+                        <li>SEO básico y velocidad optimizada</li>
+                    </ul>
+                </div>
+                <div class="site-card recommended">
+                    <div class="site-tag">Paso 2</div>
+                    <div class="site-name">Acompañamiento</div>
+                    <div class="site-desc">Gestión mes a mes de todo el ecosistema. Nosotros nos encargamos de la <em>pauta, las optimizaciones y la estrategia</em>. Tú te enfocas en crear productos y producir.</div>
+                    <ul class="site-feat">
+                        <li>Gestión de pauta publicitaria (Meta Ads)</li>
+                        <li>Optimizaciones continuas en la página</li>
+                        <li>Email marketing mensual (campañas + flujos)</li>
+                        <li>Gestión de creadores UGC</li>
+                        <li>Reunión quincenal de seguimiento</li>
+                        <li>Reportes de resultados</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Sobre los creadores UGC</h2>
+            <p>Tú misma lo notaste: el contenido grabado con celular funciona mejor que el contenido "muy producido". En pauta pasa exactamente lo mismo. Por eso trabajamos con una red de <strong>+320 creadores en todo Colombia</strong> que producen contenido estilo orgánico para las marcas.</p>
+            <p>Nosotros gestionamos todo: contactamos al creador, firmamos contrato, les enviamos el producto y recibimos el contenido listo para usar en pauta. El pago de los creadores es adicional (desde $150.000 por video), pero la gestión está incluida en el acompañamiento.</p>
+        </section>
+
+        <section>
+            <h2>Cómo trabajamos</h2>
+            <div class="pillars">
+                <div class="pillar">
+                    <div class="pillar-n">01</div>
+                    <div class="pillar-t">Si tú no creces, nosotros tampoco</div>
+                    <p>Nuestro modelo incluye un porcentaje de las ventas. Eso alinea nuestros incentivos: si a ti te va bien, a nosotros también.</p>
+                </div>
+                <div class="pillar">
+                    <div class="pillar-n">02</div>
+                    <div class="pillar-t">Ecosistema completo</div>
+                    <p>No solo hacemos la página. Hacemos email, pauta, contenido, optimización. Todo lo que una marca necesita para vender por internet.</p>
+                </div>
+                <div class="pillar">
+                    <div class="pillar-n">03</div>
+                    <div class="pillar-t">Tú te enfocas en tu producto</div>
+                    <p>Te encargas de innovar, crear colecciones nuevas, producir. Nosotros nos encargamos del canal digital.</p>
+                </div>
+                <div class="pillar">
+                    <div class="pillar-n">04</div>
+                    <div class="pillar-t">Transparencia total</div>
+                    <p>Reunión quincenal donde te mostramos qué hicimos, cuánto invertimos, cuánto vendimos. Números reales, sin caja negra.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Qué incluye la puesta a punto</h2>
+            <ul class="inc">
+                <li><b>Diseño y desarrollo</b> de tu tienda en Shopify, a la medida de tu marca</li>
+                <li><b>Carga de productos</b> con todas las fotos, descripciones y variantes</li>
+                <li><b>Configuración de pasarela de pagos</b> (Mercado Pago o WomPi)</li>
+                <li><b>Flujos de email marketing</b> configurados: carrito abandonado, bienvenida, post-compra</li>
+                <li><b>Integración con WhatsApp</b> para atención al cliente</li>
+                <li><b>Configuración de envíos</b> a todo el país</li>
+                <li><b>SEO básico</b> para que te encuentren en Google</li>
+                <li><b>Capacitación</b> para que puedas subir productos nuevos</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Plan de trabajo</h2>
+            <div class="plan">
+                <div class="step first">
+                    <div class="step-m">Semana 1</div>
+                    <div class="step-t">Brief</div>
+                    <p>Recogemos referencias, fotos, textos y definimos la estructura de la tienda.</p>
+                </div>
+                <div class="step">
+                    <div class="step-m">Semana 2</div>
+                    <div class="step-t">Diseño</div>
+                    <p>Primera versión de la página con tus productos cargados.</p>
+                </div>
+                <div class="step">
+                    <div class="step-m">Semana 3</div>
+                    <div class="step-t">Ajustes</div>
+                    <p>Iteramos contigo hasta que quede perfecta. Configuramos pagos y envíos.</p>
+                </div>
+                <div class="step">
+                    <div class="step-m">Semana 4</div>
+                    <div class="step-t">Lanzamiento</div>
+                    <p>Página en vivo, lista para vender. Arrancamos el acompañamiento.</p>
+                </div>
+            </div>
+            <div class="guarantee">
+                <span class="g-tag">Alineados</span>
+                <p>El acompañamiento incluye un <b>fee fijo + 7% de las ventas netas</b>. Así nuestro éxito depende del tuyo.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Experiencia</h2>
+            <p>En LA REAL trabajamos mes a mes con <strong>+25 marcas en Latinoamérica</strong> y hemos trabajado con <strong>+200 marcas a nivel mundial</strong>. Montamos tiendas, gestionamos pauta, creamos contenido. Por cierto, <span class="brand">Dulcey</span> —quien te recomendó— lleva 4 años trabajando con nosotros, y <span class="brand">Adrisa</span>, otra marca de Bucaramanga, arrancó con nosotros hace 4 meses desde cero, igual que tú.</p>
+            <div class="mq">
+                <div class="mq-row"><div class="mq-track" id="mq1"></div></div>
+                <div class="mq-row reverse"><div class="mq-track" id="mq2"></div></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Inversión</h2>
+            <div class="pkgs">
+                <div class="pkg">
+                    <div class="pkg-name">Puesta a punto</div>
+                    <div class="pkg-sub">Pago único</div>
+                    <div class="pkg-price">$6.900.000</div>
+                    <div class="pkg-aud">Página web + email marketing + ecosistema completo</div>
+                </div>
+                <div class="pkg">
+                    <div class="pkg-name">Acompañamiento</div>
+                    <div class="pkg-sub">Fee mensual</div>
+                    <div class="pkg-price">$2.500.000</div>
+                    <div class="pkg-unit">+ 7% de ventas netas</div>
+                    <div class="pkg-aud">Pauta, optimizaciones, email, UGC, reportes</div>
+                </div>
+                <div class="pkg combo">
+                    <div class="pkg-tag">Recomendado</div>
+                    <div class="pkg-name">Arrancar completo</div>
+                    <div class="pkg-sub">Puesta a punto + primer mes</div>
+                    <div class="pkg-price">$9.400.000</div>
+                    <div class="pkg-unit">+ 7% de ventas del mes 1</div>
+                    <div class="pkg-aud">Todo listo para vender y escalar desde el día uno</div>
+                </div>
+            </div>
+            <p class="note">Podemos facturar <strong>sin IVA</strong>. El pago a creadores UGC es adicional (desde $150.000 por video). La inversión en pauta publicitaria también es adicional y la defines tú.</p>
+        </section>
+
+        <section>
+            <h2>Sobre la pauta publicitaria</h2>
+            <p>Un dato importante: por lo general, las marcas invierten entre un <strong>15% y 20% de sus ventas en publicidad</strong>. Eso es lo que hace que llegues a clientes en todo el país. Tenlo en cuenta al calcular tus márgenes.</p>
+            <p>Hay marcas que invierten menos, pero suelen tener otras estrategias activas: influenciadores, eventos, alianzas. Si apenas estás arrancando, la pauta es el camino más directo para crecer rápido.</p>
+        </section>
+
+        <div class="next">
+            <h2>Siguiente paso</h2>
+            <p>Si te hace sentido, arrancamos con el brief y en 2-3 semanas tienes tu tienda online lista para vender. Cualquier duda, escríbeme y la resolvemos.</p>
+            <a class="cta" href="https://wa.me/573043148428?text=Hola%20Juanfe%2C%20vi%20la%20propuesta%20de%20AMIRA%20y%20quiero%20avanzar" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Hablemos por WhatsApp
+            </a>
+        </div>
+
+        <div class="foot">
+            <span>Preparado por <img src="logo-la-real.png" alt="LA REAL"> LA REAL — Agencia digital</span>
+            <span>juanfe@larealmarketing.com</span>
+        </div>
+
+    </div>
+
+    <script>
+        const BRANDS = ['Dulcey','Adrisa','Cacao Hunters','Kryolan','Panavayu','Barba Roja','Leonisa','Once','Pachha','Zorro y Jaguar','Estruendo','Ukelele','Sandra Botero','Cíclico','IFW','Atratus','Gratu','Natnack'];
+        function brandsHTML(list) {
+            const items = list.map(b => `<span class="mq-item"><span class="word">${b}</span><span class="ast">✱</span></span>`).join('');
+            return items + items;
+        }
+        const half = Math.floor(BRANDS.length / 2);
+        const rotated = [...BRANDS.slice(half), ...BRANDS.slice(0, half)];
+        document.getElementById('mq1').innerHTML = brandsHTML(BRANDS);
+        document.getElementById('mq2').innerHTML = brandsHTML(rotated);
+    </script>
+</body>
+</html>
